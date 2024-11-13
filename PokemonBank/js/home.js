@@ -10,7 +10,7 @@ $(document).ready(function() {
     // Cambiamos la informacion principal
     usuarioNombre.innerHTML = dataUsuario.nombre;
     usuarioCuenta.innerHTML = dataUsuario.cuenta;
-    usuarioSaldo.innerHTML = dataUsuario.saldo;
+    usuarioSaldo.innerHTML = dataUsuario.saldo.toFixed(2);
 
     /**
      * Funcion para interceptar la accion del boton
