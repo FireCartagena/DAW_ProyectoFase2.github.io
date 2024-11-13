@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<!-- ----- CONFIGURACION DE LA PAGINA WEB ----- -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta charset="UTF-8" />
+		
+		<!-- ----- ICON & NAME PAGE ----- -->
+		<title>PokemonBank - Confirmacion servicio</title>
+		<link rel="SHORTCUT ICON" href="media/image/Page_icon.ico">
+		
+		<!-- ----- PLUGINS ----- -->
+		<!-- JQuery -->
+		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+		
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+		
+		<!-- Fontawesome -->
+		<!--<link rel="stylesheet" href="plugins/fontawesome/css/all.css">-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+		
+		<!-- ChartJS -->
+		<!--<script src="plugins/Chart.js/chart.umd.js"></script>-->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		
+		<!-- jsPDF -->
+		<!--<script src="plugins/jsPDF/jspdf.umd.min.js"></script>-->
+		<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+		<script src="plugins/jsPDF/jspdf.plugin.autotable.min.js"></script>
+		
+		<!-- SweetAlert -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+		
+		<!-- Validate -->
+		<script src="plugins/validatejs/validate.js"></script>
+		
+		<!-- DataTables -->
+		<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+		<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+		
+		<!-- PERSONALIZACIONES CSS/JS -->
+		<script src="js/data_local.js"></script>
+		<link rel="stylesheet" href="css/serviciosConfirmacion.css">
+		<script src="js/serviciosConfirmacion.js"></script>
+		
+	</head>
+	
+	<body>
+		<section class="jumbotron text-center bg-light py-5">
+			<div class="container">
+				<h2 class="jumbotron-heading">Bienvenido <span id="usuarioNombre"></span></h2>
+				<h3>Saldo: $ <span id="usuarioSaldo"></span></h3>
+			</div>
+    	</section>
+    	
+    	<div class="container-fluid mb-5">
+    	
+    		<div class="row justify-content-center">
+    			<div class="col-md-8 col-12">
+    				<div class="card shadow-lg">
+    					<div class="card-header bg-success text-white ">
+    						<h4>Pago de servicio Confirmado</h4>
+    					</div>
+    					<div class="card-body">
+    						<h5 class="card-title mb-4 text-center">Detalles de pago</h5>
+    						<p class="card-text text-center">Su pago ha sido procesado con éxito.</p>
+    						<div class="mb-3">
+    							<p><strong>Número de Cuenta:</strong> <span id="numeroCuenta">123456789</span></p>
+    							<hr>
+    							<p><strong>Servicio pagado:</strong> <span id="nombreServicio">Internet</span></p>
+    							<p><strong>Número referencia:</strong> <span id="numeroReferencia">123456789</span></p>
+    							<p><strong>NPE cancelado:</strong> <span id="numeroNpe">0000123452563987</span></p>
+    							<p><strong>Monto cancelado:</strong> $<span id="montoPagado">26.69</span></p>
+    							<p><strong>Fecha:</strong> <span id="pagoFecha">29 de Septiembre, 2024</span></p>
+    						</div>
+    						
+    						<div class="row">
+    							<div class="col-6">
+    								<button class="btn btn-primary btn-block" onclick="window.location.href='home.html'">Finalizar</button>
+    							</div>
+    							<div class="col-6">
+    								<button class="btn btn-secondary btn-block" id="descargarComprobante">Descargar PDF</button>
+    							</div>
+    						</div>
+    					</div>
+    					<div class="card-footer text-center">
+    						<small class="text-muted">Gracias por usar nuestros servicios.</small>
+    					</div>
+    				</div>
+    			</div>
+    		</div>
+    		
+    	</div>
+    	
+    	<footer class="footer fixed-bottom bg-dark">
+    		<div class="container text-center">
+    			<span class="text-muted">© 2024 The coding crew, Inc.</span>
+    		</div>
+    	</footer>
+	</body>
+</html>

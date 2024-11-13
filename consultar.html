@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="es">
+	<head>
+		<!-- ----- CONFIGURACION DE LA PAGINA WEB ----- -->
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta charset="UTF-8" />
+		
+		<!-- ----- ICON & NAME PAGE ----- -->
+		<title>PokemonBank - Consulta</title>
+		<link rel="SHORTCUT ICON" href="media/image/Page_icon.ico">
+		
+		<!-- ----- PLUGINS ----- -->
+		<!-- JQuery -->
+		<script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+		
+		<!-- Bootstrap -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+		<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+		
+		<!-- Fontawesome -->
+		<!--<link rel="stylesheet" href="plugins/fontawesome/css/all.css">-->
+		<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/js/all.min.js"></script>
+		
+		<!-- ChartJS -->
+		<!--<script src="plugins/Chart.js/chart.umd.js"></script>-->
+		<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+		
+		<!-- jsPDF -->
+		<!--<script src="plugins/jsPDF/jspdf.umd.min.js"></script>-->
+		<script src="https://unpkg.com/jspdf@latest/dist/jspdf.umd.min.js"></script>
+		<script src="plugins/jsPDF/jspdf.plugin.autotable.min.js"></script>
+		
+		<!-- SweetAlert -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.min.css">
+		<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11.14.5/dist/sweetalert2.all.min.js"></script>
+		
+		<!-- Validate -->
+		<script src="plugins/validatejs/validate.js"></script>
+		
+		<!-- DataTables -->
+		<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.dataTables.min.css">
+		<link rel="stylesheet" href="https://cdn.datatables.net/2.1.8/css/dataTables.bootstrap5.css">
+		<script src="https://cdn.datatables.net/2.1.8/js/dataTables.min.js"></script>
+		<script src="https://cdn.datatables.net/2.1.8/js/dataTables.bootstrap5.js"></script>
+		
+		<!-- PERSONALIZACIONES CSS/JS -->
+		<script src="js/data_local.js"></script>
+		<link rel="stylesheet" href="css/consultar.css">
+		<script src="js/consultar.js"></script>
+		
+	</head>
+	
+	<body>
+		<section class="jumbotron text-center bg-light py-5">
+			<div class="container">
+				<h2 class="jumbotron-heading">Bienvenido <span id="usuarioNombre"></span></h2>
+			</div>
+    	</section>
+    	
+		<div class="container-fluid mb-5">
+			
+		</div>
+
+    	<div class="container-fluid mb-5">
+    	
+    		<div class="row justify-content-center">
+    			<div class="col-12">
+    				<div class="card shadow-lg">
+    					<div class="card-header bg-info text-white text-center">
+    						<h4>Consulta de Saldo</h4>
+    					</div>
+    					<div class="card-body">
+    						<div class="row mb-3">
+    							<div class="col-12">
+    								<form id="consultForm">
+										<div class="mb-3">
+											<label for="cuenta" class="form-label"><b>úmero de cuenta:</b> <span id="usuarioCuenta"></span></label>
+										</div>
+										<div class="mb-3">
+											<label for="balance" class="form-label"><b>Saldo:</b> $<span id="usuarioSaldo"></span></label>
+										</div>
+										<div class="row mb-3">
+											<div class="col-6">
+												<a href="home.html" class="btn btn-danger btn-block">Cancelar</a>
+											</div>
+											<div class="col-6">
+												<button type="submit" class="btn btn-success btn-block" id="consultar">Consultar</button>
+											</div>
+										</div>
+									</form>
+    							</div>
+    						</div>
+    						
+							<div>
+								<div class="card-deck ">
+									<div class="card shadow-lg">
+    									<div class="card-header bg-success text-white text-center">
+    										<h5>Listado de transacciones</h5>
+    									</div>
+    									<div class="card-body">
+    										<div class="row" >
+    											<div class="col-12" >
+													<div class="table-responsive">
+    												<table class="table table-bordered table-striped" id="movimientosLista">
+														<thead class="table-light">
+															<tr>
+																<th scope="col">Fecha</th>
+	    											 			<th scope="col">Tipo de Movimiento</th>
+    												 			<th scope="col">Monto</th>
+    												 			<th scope="col">Saldo</th>
+															</tr>
+														</thead>
+														<tbody id="movimientosEspacio">
+
+														</tbody>
+													</table>
+												</div>
+												</div>    						 
+											</div>
+										</div>
+									</div>
+									
+									<div class="card shadow-lg">
+										<div class="card-header bg-success text-white text-center">
+											<h5>Distribucion de las transacciones</h5>
+										</div>
+										<div class="card-body">
+											<canvas id="movimientosChart"></canvas>
+										</div>
+									</div>
+								</div>
+							</div>    						
+    					</div>
+
+    					<div class="card-footer text-center">
+                        	<small class="text-muted">...</small>
+                        </div>
+					</div>
+				</div>
+			</div>
+    		
+    	</div>
+    	
+    	<footer class="footer fixed-bottom bg-dark">
+    		<div class="container text-center">
+    			<span class="text-muted">© 2024 The coding crew, Inc.</span>
+    		</div>
+    	</footer>
+	</body>
+</html>
+
