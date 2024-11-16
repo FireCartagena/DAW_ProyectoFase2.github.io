@@ -12,11 +12,15 @@ $(document).ready(function() {
     usuarioCuenta.innerHTML = dataUsuario.cuenta;
 	usuarioMonto.innerHTML = dataUsuario.saldo.toFixed(2);
 
-	 $("#retiroFormulario").submit(function(event) {
-		 event.preventDefault();
-		 var retiroMonto = parseFloat($("#retiroMonto").val());
+	/**
+	 * Interceptar el envio del retiro
+	 */
+	$("#retiroFormulario").submit(function(event) {
+		event.preventDefault();
+		var retiroMonto = parseFloat($("#retiroMonto").val());
 
-		 if(dataUsuario.saldo >= retiroMonto){
+		// Validamos que el monto a retirar no sea mayor al disponible
+		if(dataUsuario.saldo >= retiroMonto){
 			Swal.fire({
 				title: '¿Desea realizar esta transferencia?',
 				text: "Desea realizar el retiro de $"+$("#retiroMonto").val(),
@@ -26,7 +30,7 @@ $(document).ready(function() {
 				cancelButtonColor: '#d33',
 				confirmButtonText: 'Confirmar',
 				cancelButtonText: 'Cancelar'
-		   }).then((result) => {
+			}).then((result) => {
 			   if (result.isConfirmed) {
 				   // El usuario confirma la transaccion
 				   nuevoRetiro(retiroMonto);
@@ -36,7 +40,7 @@ $(document).ready(function() {
 				   Swal.fire('Cancelado','La transaccion no se ha realizado.','error');
 			   }
 		   });
-		 }else{
+		}else{
 			Swal.fire({
 				title: 'El monto no se puede retirar',
 				text: "El monto sobrepasa su saldo actual de $"+dataUsuario.saldo.toFixed(2),
@@ -45,7 +49,7 @@ $(document).ready(function() {
 				cancelButtonColor: '#d33',
 				cancelButtonText: 'Cancelar'
 		   })
-		 }
+		}
 		 
 		 
 	});

@@ -9,11 +9,12 @@ $(document).ready(function() {
     usuarioNombre.innerHTML = dataUsuario.nombre;
     usuarioSaldo.innerHTML = dataUsuario.saldo;
 
+    // Obtenemos el detalle del ultimo de posito y mostramos su informacion en pantalla
+    const transaccion = ultimoDeposito();
     const usuarioCuenta = document.getElementById("usuarioCuenta");
     const referenceNumber = document.getElementById("referenceNumber");
     const depositAmount = document.getElementById("depositAmount");
     const depositDate = document.getElementById("depositDate");
-    const transaccion = ultimoDeposito();
     usuarioCuenta.innerHTML = transaccion.cuenta;
     referenceNumber.innerHTML = transaccion.numeroReferencia;
     depositAmount.innerHTML = transaccion.montoDeposito.toFixed(2);
@@ -22,7 +23,7 @@ $(document).ready(function() {
     $("#descargarComprobante").click(function(event) {
         event.preventDefault();
 
-        const { jsPDF } = window.jspdf; // Asegúrate de que jsPDF está cargado
+        const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
         // Obtener los valores del depósito

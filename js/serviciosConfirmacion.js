@@ -9,20 +9,22 @@ $(document).ready(function() {
     usuarioNombre.innerHTML = dataUsuario.nombre;
     usuarioSaldo.innerHTML = dataUsuario.saldo.toFixed(2);
     
-    const transaccion = ultimoServicio();
-    const numeroCuenta  = document.getElementById("numeroCuenta");
-    const nombreServicio= document.getElementById("nombreServicio");
-    const numeroReferencia = document.getElementById("numeroReferencia");
-    const numeroNpe = document.getElementById("numeroNpe");
-    const montoPagado = document.getElementById("montoPagado");
-    const pagoFecha = document.getElementById("pagoFecha");
+    // Obtenemos el ultimo servicio procesado
+    const transaccion       = ultimoServicio();
+    const numeroCuenta      = document.getElementById("numeroCuenta");
+    const nombreServicio    = document.getElementById("nombreServicio");
+    const numeroReferencia  = document.getElementById("numeroReferencia");
+    const numeroNpe         = document.getElementById("numeroNpe");
+    const montoPagado       = document.getElementById("montoPagado");
+    const pagoFecha         = document.getElementById("pagoFecha");
 
-    numeroCuenta.innerHTML = transaccion.cuenta;
-    nombreServicio.innerHTML = transaccion.servicio;
-    numeroReferencia.innerHTML = transaccion.numeroReferencia;
-    numeroNpe.innerHTML = transaccion.npe;
-    montoPagado.innerHTML = transaccion.montoServicio.toFixed(2);
-    pagoFecha.innerHTML = transaccion.fecha;
+    // Cambiamos los datos a mostrar 
+    numeroCuenta.innerHTML      = transaccion.cuenta;
+    nombreServicio.innerHTML    = transaccion.servicio;
+    numeroReferencia.innerHTML  = transaccion.numeroReferencia;
+    numeroNpe.innerHTML         = transaccion.npe;
+    montoPagado.innerHTML       = transaccion.montoServicio.toFixed(2);
+    pagoFecha.innerHTML         = transaccion.fecha;
     
 	
     $("#descargarComprobante").click(function(event) {

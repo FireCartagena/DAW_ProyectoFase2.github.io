@@ -9,6 +9,7 @@ $(document).ready(function() {
     usuarioNombre.innerHTML = dataUsuario.nombre;
     usuarioSaldo.innerHTML = dataUsuario.saldo.toFixed(2);
 
+    // Obtenemos el detalle del ultimo retiro y mostramos su informacion en pantalla
     const transaccion = ultimoRetiro();
     const usuarioCuenta = document.getElementById("numeroCuenta");
     const referenceNumber = document.getElementById("numeroReferencia");
@@ -22,10 +23,13 @@ $(document).ready(function() {
     montoSaldo.innerHTML = transaccion.saldoActual.toFixed(2);
     fechaRetiro.innerHTML = transaccion.fecha;
 	
+    /**
+     * Generamos el pdf con JSPDF y lo descargamos a peticion del usuario
+     */
     $("#descargarComprobante").click(function(event) {
         event.preventDefault();
 
-        const { jsPDF } = window.jspdf; // Asegúrate de que jsPDF está cargado
+        const { jsPDF } = window.jspdf;
         const doc = new jsPDF();
 
         // Obtener los valores del depósito

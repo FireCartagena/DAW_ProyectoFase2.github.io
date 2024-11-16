@@ -13,6 +13,9 @@ $(document).ready(function() {
     usuarioCuenta.innerHTML = dataUsuario.cuenta;
 	usuarioMonto.innerHTML = dataUsuario.saldo.toFixed(2);
 	
+	/**
+	 * Consultamos los datos del NPE
+	 */
 	$("#btnConsultarInfo").click(function(event) {
 		event.preventDefault();
 		
@@ -33,6 +36,9 @@ $(document).ready(function() {
 		console.log(servicio);
 	});
 	
+	/**
+	 * Interceptamos el envio del formulario de servicios
+	 */
 	$("#servicioFormulario").submit(function(event) {
 		 event.preventDefault();
 		 
@@ -54,8 +60,8 @@ $(document).ready(function() {
 		   }).then((result) => {
 			   if (result.isConfirmed) {
 				   // El usuario confirma la transaccion
-				   this.submit();
 				   nuevoServicio(textServicio, npe, fechaVencimiento, monto);
+				   this.submit();
 			   } else {
 				   // El usuario rechaza la transaccion
 				   Swal.fire('Cancelado','La transaccion no se ha realizado.','error');
